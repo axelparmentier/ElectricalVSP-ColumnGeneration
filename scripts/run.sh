@@ -9,7 +9,7 @@ if [ ! $# == 3 ]; then
         echo "  command-args: Command arguments to pass to the executable. They should be between \"\"."
         echo "  suffix: Suffix to append to output folder. Usually it is something regarding the parameters."
         echo "Example:"
-        echo "  $0 instances/kshs.txt \"cg -hp ng -ep ng -ng 8 -cuts\" ng8-cuts"
+        echo "  $0 instances/all.txt \"cg -hp na -ep\" suffix"
         exit
 fi
 
@@ -24,7 +24,6 @@ dir=out/$timestamp-$hostname-$suffix
 mkdir -p out
 mkdir -p $dir
 
-~/libs/telegram/telegram -C ">>> Starting EVSP test ${dir} <<<"
 while read -r line;
 do
 	temp=${line##*/}
@@ -32,6 +31,3 @@ do
 	sem -j 5 timeout -k 15s 360m ./release/evsp ${line} $2 > ${out}
 done < $1
 sem --wait
-
-~/libs/telegram/telegram -C ">>> Finished EVSP test ${dir} <<<"
-
