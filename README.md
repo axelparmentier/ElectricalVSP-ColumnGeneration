@@ -85,3 +85,5 @@ The numerical experiments of the paper can be reproduced using the following scr
 ./scripts/bp.sh     # Branch and price experiments
 ./scripts/dive.sh   # Diving heuristic experiments
 ```
+
+Remark that you may have to install `sem` using `sudo apt install parallel` to rune these scripts.
